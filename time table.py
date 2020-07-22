@@ -37,7 +37,7 @@ pr = soup.find('dd').find_all('a')[1].get('href')
 sh_name_day = soup.find('dd').find_all('a')[0].get_text()[soup.find('dd').find_all('a')[0].get_text().index("(") : soup.find('dd').find_all('a')[0].get_text().index(")")+1]
 sh_name = f'{dy.datetime.today().month}.{dy.datetime.today().day}{sh_name_day}'
 # sh_name = '날짜'
-print(sh_name)
+# print(sh_name)
 
 
 preview_url = f'http://jeil.jje.hs.kr{pr}'
@@ -72,9 +72,10 @@ for i in range(15,28):
             sum_cell.append([i-12, j])
 
 # print(sum_cell)
-if sum_cell != None:
+
+if sum_cell != []:
     ws.merge_cells(start_row= sum_cell[0][1]-1, start_column=sum_cell[0][0]-1,end_row= sum_cell[0][1]-1,end_column=sum_cell[len(sum_cell)-1][0])
 
 wb.save(f"{sh_name} 시간표.xlsx")
 
-# os.remove('sd.xlsx')
+os.remove('sd.xlsx')
